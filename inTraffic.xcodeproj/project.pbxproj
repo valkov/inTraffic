@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95B4DDC1653FA5AEB1A93086 /* libPods-inTraffic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D05CB5CB7D07A9D96FF0D16 /* libPods-inTraffic.a */; };
 		EA3CFF8F1E0814F10033D321 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CFF8E1E0814F10033D321 /* main.m */; };
 		EA3CFF921E0814F10033D321 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CFF911E0814F10033D321 /* AppDelegate.m */; };
 		EA3CFF951E0814F10033D321 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3CFF941E0814F10033D321 /* ViewController.m */; };
 		EA3CFF981E0814F10033D321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3CFF961E0814F10033D321 /* Main.storyboard */; };
 		EA3CFF9A1E0814F10033D321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3CFF991E0814F10033D321 /* Assets.xcassets */; };
 		EA3CFF9D1E0814F10033D321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3CFF9B1E0814F10033D321 /* LaunchScreen.storyboard */; };
+		EA3CFFA61E0815980033D321 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3CFFA51E0815980033D321 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D05CB5CB7D07A9D96FF0D16 /* libPods-inTraffic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-inTraffic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63694305FEDC9F18C531FC9F /* Pods-inTraffic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inTraffic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inTraffic/Pods-inTraffic.debug.xcconfig"; sourceTree = "<group>"; };
+		997F178DEE2A7D0FE2FF9986 /* Pods-inTraffic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inTraffic.release.xcconfig"; path = "Pods/Target Support Files/Pods-inTraffic/Pods-inTraffic.release.xcconfig"; sourceTree = "<group>"; };
 		EA3CFF8A1E0814F10033D321 /* inTraffic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inTraffic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3CFF8E1E0814F10033D321 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA3CFF901E0814F10033D321 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +31,7 @@
 		EA3CFF991E0814F10033D321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA3CFF9C1E0814F10033D321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA3CFF9E1E0814F10033D321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA3CFFA51E0815980033D321 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3CFFA61E0815980033D321 /* CoreMotion.framework in Frameworks */,
+				95B4DDC1653FA5AEB1A93086 /* libPods-inTraffic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CEECD8246CF79EE669B0D17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63694305FEDC9F18C531FC9F /* Pods-inTraffic.debug.xcconfig */,
+				997F178DEE2A7D0FE2FF9986 /* Pods-inTraffic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EA3CFF811E0814F10033D321 = {
 			isa = PBXGroup;
 			children = (
 				EA3CFF8C1E0814F10033D321 /* inTraffic */,
 				EA3CFF8B1E0814F10033D321 /* Products */,
+				EA3CFFA41E0815980033D321 /* Frameworks */,
+				3CEECD8246CF79EE669B0D17 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +98,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EA3CFFA41E0815980033D321 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA3CFFA51E0815980033D321 /* CoreMotion.framework */,
+				2D05CB5CB7D07A9D96FF0D16 /* libPods-inTraffic.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA3CFFA11E0814F10033D321 /* Build configuration list for PBXNativeTarget "inTraffic" */;
 			buildPhases = (
+				7929381AC71D60EC7EA2F62F /* [CP] Check Pods Manifest.lock */,
 				EA3CFF861E0814F10033D321 /* Sources */,
 				EA3CFF871E0814F10033D321 /* Frameworks */,
 				EA3CFF881E0814F10033D321 /* Resources */,
+				D52437CB8DD5FB2F0F6DACC2 /* [CP] Embed Pods Frameworks */,
+				A1AE061A8B39115EFC172568 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,7 +141,13 @@
 				TargetAttributes = {
 					EA3CFF891E0814F10033D321 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = JE26HLJZLX;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -144,6 +181,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7929381AC71D60EC7EA2F62F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A1AE061A8B39115EFC172568 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inTraffic/Pods-inTraffic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D52437CB8DD5FB2F0F6DACC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inTraffic/Pods-inTraffic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA3CFF861E0814F10033D321 /* Sources */ = {
@@ -196,6 +281,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -244,6 +330,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -270,8 +357,10 @@
 		};
 		EA3CFFA21E0814F10033D321 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63694305FEDC9F18C531FC9F /* Pods-inTraffic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JE26HLJZLX;
 				INFOPLIST_FILE = inTraffic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vk.inTraffic;
@@ -281,8 +370,10 @@
 		};
 		EA3CFFA31E0814F10033D321 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 997F178DEE2A7D0FE2FF9986 /* Pods-inTraffic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JE26HLJZLX;
 				INFOPLIST_FILE = inTraffic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vk.inTraffic;
@@ -309,6 +400,7 @@
 				EA3CFFA31E0814F10033D321 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
