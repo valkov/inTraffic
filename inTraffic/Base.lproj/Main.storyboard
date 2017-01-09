@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,6 +85,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXU-O4-2DD">
+                                <rect key="frame" x="66" y="509" width="243" height="148"/>
+                                <state key="normal" title="Send email">
+                                    <color key="titleColor" red="1" green="0.91986701059999998" blue="0.2080042741" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="debugButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBp-oI-q8V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.37647058820000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -92,6 +101,7 @@
                             <constraint firstItem="PMS-JC-brQ" firstAttribute="top" secondItem="4lr-0S-418" secondAttribute="bottom" constant="34" id="1yK-Jl-HIS"/>
                             <constraint firstItem="Mwb-rS-L0X" firstAttribute="top" secondItem="krC-dB-h4A" secondAttribute="bottom" constant="27" id="95V-ze-Ak6"/>
                             <constraint firstItem="krC-dB-h4A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="95u-kU-9re"/>
+                            <constraint firstItem="NXU-O4-2DD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="ABO-63-oSe"/>
                             <constraint firstItem="eb6-Rv-uXt" firstAttribute="top" secondItem="PMS-JC-brQ" secondAttribute="bottom" constant="44" id="AHM-0D-7N8"/>
                             <constraint firstItem="Mwb-rS-L0X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Bbb-Ps-6Fz"/>
                             <constraint firstItem="4lr-0S-418" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="54" id="FK6-gQ-bO2"/>
@@ -99,9 +109,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="4lr-0S-418" secondAttribute="trailing" constant="10" id="Osh-T4-W0b"/>
                             <constraint firstItem="luA-3Q-Vj8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="R5f-Sr-xwi"/>
                             <constraint firstItem="luA-3Q-Vj8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Rgf-el-v9y"/>
+                            <constraint firstItem="NXU-O4-2DD" firstAttribute="top" secondItem="mKO-X3-e6L" secondAttribute="bottom" constant="36" id="Xie-EF-uLm"/>
                             <constraint firstItem="PMS-JC-brQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Zj4-ZU-geL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NXU-O4-2DD" secondAttribute="trailing" constant="50" id="aaW-Bt-mIp"/>
                             <constraint firstItem="eb6-Rv-uXt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="ed1-r2-mdm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eb6-Rv-uXt" secondAttribute="trailing" constant="10" id="iIT-ck-hRD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NXU-O4-2DD" secondAttribute="bottom" constant="10" id="iqo-ye-HW4"/>
                             <constraint firstItem="mKO-X3-e6L" firstAttribute="top" secondItem="luA-3Q-Vj8" secondAttribute="bottom" constant="20" id="iqp-QW-Cfg"/>
                             <constraint firstItem="mKO-X3-e6L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="j9Q-U7-5xE"/>
                             <constraint firstItem="luA-3Q-Vj8" firstAttribute="top" secondItem="Mwb-rS-L0X" secondAttribute="bottom" constant="20" id="ltu-Gr-uYM"/>

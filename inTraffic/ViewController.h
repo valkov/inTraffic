@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreLocation/CoreLocation.h"
+#import <MessageUI/MessageUI.h> 
 
-@interface ViewController : UIViewController<CLLocationManagerDelegate>
+@interface ViewController : UIViewController<CLLocationManagerDelegate, MFMailComposeViewControllerDelegate>
 
 
 @end

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
+- (IBAction)debugButtonTapped:(id)sender;
 
 @property (nonatomic, strong) CMMotionActivityManager *activityManager;
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -26,6 +27,8 @@
 @property (nonatomic, strong) NSDate *lastRequestDate;
 
 @property (nonatomic, strong) AFHTTPRequestOperationManager *operationsManager;
+
+@property (nonatomic, strong) NSDictionary *failedResponse;
 @end
 
 @implementation ViewController
@@ -58,7 +61,7 @@
             
             //self.lastLocation = CLLocationCoordinate2DMake(50.448176, 30.522104);
             
-            if(!self.lastRequestDate || [self.lastRequestDate timeIntervalSinceDate:[NSDate date]] <= -60) {
+            if(!self.lastRequestDate || [self.lastRequestDate timeIntervalSinceDate:[NSDate date]] <= -30) {
                 NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&departure_time=now&key=AIzaSyBbXiWCMae7uVQORlSXMprCmbLYro6BY_w", self.lastLocation.latitude, self.lastLocation.longitude, self.lastLocation.latitude, self.lastLocation.longitude];
                 
                 [self.operationsManager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
@@ -79,7 +82,7 @@
                             
                             self.view.backgroundColor = [UIColor colorWithRed:red/255.0f green:green/255.0f blue:0 alpha:0.6];
                             
-                            if(activity.automotive && activity.stationary && activity.confidence == CMMotionActivityConfidenceHigh && trafficValue >= 200 && [streetType isEqualToString:@"route"]) {
+                            if(activity.automotive && activity.confidence == CMMotionActivityConfidenceHigh && trafficValue >= 150  && [streetType isEqualToString:@"route"]) {
                                 //self.view.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
                                 
                                 AudioServicesPlaySystemSound(1103);
@@ -92,14 +95,15 @@
                         self.lastRequestDate = nil;
                         self.label5.text = @"";
                         self.label6.text = @"";
-                        self.label8.text = @"";
+                        self.label8.text = @"error parsing googleapis response";
                         self.view.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+                        self.failedResponse = @{@"url":url, @"response":responseObject};
                     } @finally {
                         
                     }
                     
                 } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-                    
+                    self.label6.text = error.localizedDescription;
                 }];
                 
                 self.lastRequestDate = [NSDate date];
@@ -133,4 +137,53 @@
     }
 }
 
+- (IBAction)debugButtonTapped:(id)sender {
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please setup email on the device" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    if(!self.failedResponse) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Nothing to send" message:@"There was no exception during parsing yet, send email when you see a blue screen" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+
+    }
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:@"inTraffic exception during parsing"];
+    [mc setMessageBody:[self.failedResponse description] isHTML:NO];
+    [mc setToRecipients:@[@"valentinkovalski@gmail.com"]];
+    
+    // Present mail view controller on screen
+    [self presentViewController:mc animated:YES completion:NULL];
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 @end
