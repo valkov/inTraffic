@@ -68,27 +68,32 @@
                     @try {
                         self.label5.text = responseObject[@"routes"][0][@"legs"][0][@"start_address"];
                         
-                        NSString *streetType = responseObject[@"geocoded_waypoints"][0][@"types"][0];
-                        self.label8.text = [NSString stringWithFormat:@"type: %@", streetType];
-                        NSDictionary *durationInTraffic = responseObject[@"routes"][0][@"legs"][0][@"duration_in_traffic"];
-                        if(durationInTraffic.allKeys.count == 2) {
-                            self.label6.text = [NSString stringWithFormat:@"traffic_duration: %@, value:%@", durationInTraffic[@"text"], durationInTraffic[@"value"]];
-                            
-                            NSUInteger trafficValue = [durationInTraffic[@"value"] integerValue];
-                            NSInteger green = 255 - trafficValue;
-                            if(green < 0)
-                                green = 0;
-                            NSInteger red = trafficValue;
-                            
-                            self.view.backgroundColor = [UIColor colorWithRed:red/255.0f green:green/255.0f blue:0 alpha:0.6];
-                            
-                            if(activity.automotive && activity.confidence == CMMotionActivityConfidenceHigh && trafficValue >= 150  && [streetType isEqualToString:@"route"]) {
-                                //self.view.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+                        if(![responseObject[@"geocoded_waypoints"] count]) {
+                            self.lastRequestDate = nil;
+                        }
+                        else {
+                            NSString *streetType = responseObject[@"geocoded_waypoints"][0][@"types"][0];
+                            self.label8.text = [NSString stringWithFormat:@"type: %@", streetType];
+                            NSDictionary *durationInTraffic = responseObject[@"routes"][0][@"legs"][0][@"duration_in_traffic"];
+                            if(durationInTraffic.allKeys.count == 2) {
+                                self.label6.text = [NSString stringWithFormat:@"traffic_duration: %@, value:%@", durationInTraffic[@"text"], durationInTraffic[@"value"]];
                                 
-                                AudioServicesPlaySystemSound(1103);
-                            }
-                            else {
-                                //self.view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
+                                NSUInteger trafficValue = [durationInTraffic[@"value"] integerValue];
+                                NSInteger green = 255 - trafficValue;
+                                if(green < 0)
+                                    green = 0;
+                                NSInteger red = trafficValue;
+                                
+                                self.view.backgroundColor = [UIColor colorWithRed:red/255.0f green:green/255.0f blue:0 alpha:0.6];
+                                
+                                if(activity.automotive && activity.confidence == CMMotionActivityConfidenceHigh && trafficValue >= 150  && [streetType isEqualToString:@"route"]) {
+                                    //self.view.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+                                    
+                                    AudioServicesPlaySystemSound(1103);
+                                }
+                                else {
+                                    //self.view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.5];
+                                }
                             }
                         }
                     } @catch (NSException *exception) {
