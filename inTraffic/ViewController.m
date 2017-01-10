@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label3;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label9;
 - (IBAction)debugButtonTapped:(id)sender;
 
 @property (nonatomic, strong) CMMotionActivityManager *activityManager;
@@ -29,6 +30,9 @@
 @property (nonatomic, strong) AFHTTPRequestOperationManager *operationsManager;
 
 @property (nonatomic, strong) NSDictionary *failedResponse;
+@property (nonatomic, assign) NSUInteger successedRequestsCounter;
+@property (nonatomic, assign) NSUInteger failedRequestsCounter;
+@property (nonatomic, assign) NSUInteger emptyRequestsCounter;
 @end
 
 @implementation ViewController
@@ -61,17 +65,21 @@
             
             //self.lastLocation = CLLocationCoordinate2DMake(50.448176, 30.522104);
             
+            self.label9.text = [NSString stringWithFormat:@"success: %lu, failed: %lu, empty: %lu", (unsigned long)self.successedRequestsCounter, self.failedRequestsCounter, self.emptyRequestsCounter];
+            
             if(!self.lastRequestDate || [self.lastRequestDate timeIntervalSinceDate:[NSDate date]] <= -30) {
                 NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&departure_time=now&key=AIzaSyBbXiWCMae7uVQORlSXMprCmbLYro6BY_w", self.lastLocation.latitude, self.lastLocation.longitude, self.lastLocation.latitude, self.lastLocation.longitude];
                 
                 [self.operationsManager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+                    
+                    self.successedRequestsCounter++;
+                    
                     @try {
-                        self.label5.text = responseObject[@"routes"][0][@"legs"][0][@"start_address"];
-                        
                         if(![responseObject[@"geocoded_waypoints"] count]) {
                             self.lastRequestDate = nil;
                         }
                         else {
+                            self.label5.text = responseObject[@"routes"][0][@"legs"][0][@"start_address"];
                             NSString *streetType = responseObject[@"geocoded_waypoints"][0][@"types"][0];
                             self.label8.text = [NSString stringWithFormat:@"type: %@", streetType];
                             NSDictionary *durationInTraffic = responseObject[@"routes"][0][@"legs"][0][@"duration_in_traffic"];
@@ -97,6 +105,7 @@
                             }
                         }
                     } @catch (NSException *exception) {
+                        self.emptyRequestsCounter++;
                         self.lastRequestDate = nil;
                         self.label5.text = @"";
                         self.label6.text = @"";
@@ -109,6 +118,7 @@
                     
                 } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
                     self.label6.text = error.localizedDescription;
+                    self.failedRequestsCounter++;
                 }];
                 
                 self.lastRequestDate = [NSDate date];

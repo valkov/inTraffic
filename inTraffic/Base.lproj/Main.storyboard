@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -94,11 +94,21 @@
                                     <action selector="debugButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kBp-oI-q8V"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cIZ-lL-y9f">
+                                <rect key="frame" x="16" y="495" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GGO-eR-do8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313730000001" green="0.37647058820000001" blue="0.72156862749999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="krC-dB-h4A" firstAttribute="top" secondItem="eb6-Rv-uXt" secondAttribute="bottom" constant="44" id="0Av-mD-rhs"/>
                             <constraint firstItem="PMS-JC-brQ" firstAttribute="top" secondItem="4lr-0S-418" secondAttribute="bottom" constant="34" id="1yK-Jl-HIS"/>
+                            <constraint firstItem="cIZ-lL-y9f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5fR-XL-oAO"/>
                             <constraint firstItem="Mwb-rS-L0X" firstAttribute="top" secondItem="krC-dB-h4A" secondAttribute="bottom" constant="27" id="95V-ze-Ak6"/>
                             <constraint firstItem="krC-dB-h4A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="95u-kU-9re"/>
                             <constraint firstItem="NXU-O4-2DD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="ABO-63-oSe"/>
@@ -112,7 +122,9 @@
                             <constraint firstItem="NXU-O4-2DD" firstAttribute="top" secondItem="mKO-X3-e6L" secondAttribute="bottom" constant="36" id="Xie-EF-uLm"/>
                             <constraint firstItem="PMS-JC-brQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Zj4-ZU-geL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NXU-O4-2DD" secondAttribute="trailing" constant="50" id="aaW-Bt-mIp"/>
+                            <constraint firstItem="cIZ-lL-y9f" firstAttribute="top" secondItem="mKO-X3-e6L" secondAttribute="bottom" constant="22" id="d00-va-2Nh"/>
                             <constraint firstItem="eb6-Rv-uXt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="ed1-r2-mdm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cIZ-lL-y9f" secondAttribute="trailing" id="hem-Ho-gti"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eb6-Rv-uXt" secondAttribute="trailing" constant="10" id="iIT-ck-hRD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NXU-O4-2DD" secondAttribute="bottom" constant="10" id="iqo-ye-HW4"/>
                             <constraint firstItem="mKO-X3-e6L" firstAttribute="top" secondItem="luA-3Q-Vj8" secondAttribute="bottom" constant="20" id="iqp-QW-Cfg"/>
@@ -132,6 +144,7 @@
                         <outlet property="label5" destination="Mwb-rS-L0X" id="yyi-gL-XVn"/>
                         <outlet property="label6" destination="luA-3Q-Vj8" id="fFI-Qk-HBV"/>
                         <outlet property="label8" destination="mKO-X3-e6L" id="gWo-sL-qX7"/>
+                        <outlet property="label9" destination="cIZ-lL-y9f" id="lh6-GH-Vw5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
